@@ -1,0 +1,41 @@
+﻿@model UsersRegistration.Models.Users
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+    <meta name="viewport" content="width=device-width" />
+    <title>Index</title>
+</head>
+<body>
+    <div>
+        <h1>Форма регистрации пользователей</h1>
+        <form action="" method="get" class="form-group" style="width: 350px; margin-left: 50px;">
+            <input type="hidden" name="id" class="form-control" /><br />
+            <input type="text" value="@ViewBag.FirstName" name="firstNameSet" placeholder="Your firstname" class="form-control"/><br />
+            <input type="text" name="lastNameSet" placeholder="Your lastname" class="form-control" /><br />
+            <input type="email" name="emailSet" placeholder="Your email" class="form-control" /><br />
+            <input type="password" name="passwordSet" placeholder="Your password" class="form-control"/><br />
+            @Html.DropDownList("Role", new MultiSelectList(new string[] { "Admin", "User" }));
+            <input type="submit" value="Registration" class="btn btn-primary" />
+        </form>
+    </div>
+
+    @if (ViewBag.ListUsers.Count > 0)
+    {
+        foreach (var item in ViewBag.ListUsers)
+        {
+            <p>@item.id</p>
+            <p>@item.firstName</p>
+            <p>@item.lastName</p>
+            <p>@item.email</p>
+            <p>@item.password</p>
+            <p>-----------------------------</p>
+        }
+    }
+</body>
+</html>
