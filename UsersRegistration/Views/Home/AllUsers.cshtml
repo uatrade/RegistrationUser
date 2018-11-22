@@ -1,0 +1,30 @@
+﻿
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>AllUsers</title>
+</head>
+<body>
+    <div>
+        @if (ViewBag.ListUsers.Count > 0)
+        {
+            foreach (var item in ViewBag.ListUsers)
+            {
+                <p>@item.id</p>
+                <p>@item.firstName</p>
+                <p>@item.lastName</p>
+                <p>@item.email</p>
+                <p>@item.password</p>
+                <p>@item.myrole</p>
+                <p>-----------------------------</p>
+            }
+        }
+    </div>
+</body>
+</html>

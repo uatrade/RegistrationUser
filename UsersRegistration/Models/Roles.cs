@@ -7,8 +7,12 @@ namespace UsersRegistration.Models
 {
     public class Roles
     {
-        public string user { get; set; }
-        public string admin { get; set; }
+        public string Name { get; set; }
+
+        public Roles(string Name)
+        {
+            this.Name = Name;
+        }
 
     }
 }

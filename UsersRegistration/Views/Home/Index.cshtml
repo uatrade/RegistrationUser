@@ -2,6 +2,11 @@
 @{
     Layout = null;
 }
+@*
+    Generator: MvcHelper
+    GeneratePrettyNames: true
+    Namespace: My.Projects.Namespace
+*@
 
 <!DOCTYPE html>
 
@@ -14,28 +19,25 @@
 <body>
     <div>
         <h1>Форма регистрации пользователей</h1>
-        <form action="" method="get" class="form-group" style="width: 350px; margin-left: 50px;">
+        <form action="" method="post" class="form-group" style="width: 350px; margin-left: 50px;">
             <input type="hidden" name="id" class="form-control" /><br />
-            <input type="text" value="@ViewBag.FirstName" name="firstNameSet" placeholder="Your firstname" class="form-control"/><br />
+            <input type="text" name="firstNameSet" placeholder="Your firstname" class="form-control" /><br />
             <input type="text" name="lastNameSet" placeholder="Your lastname" class="form-control" /><br />
             <input type="email" name="emailSet" placeholder="Your email" class="form-control" /><br />
-            <input type="password" name="passwordSet" placeholder="Your password" class="form-control"/><br />
-            @Html.DropDownList("Role", new MultiSelectList(new string[] { "Admin", "User" }));
+            <input type="password" name="passwordSet" placeholder="Your password" class="form-control" /><br />
+            @Html.DropDownList("YourRole", new MultiSelectList(new string[] { "Admin", "User" }))
+            <br />
+
+
             <input type="submit" value="Registration" class="btn btn-primary" />
         </form>
     </div>
 
-    @if (ViewBag.ListUsers.Count > 0)
-    {
-        foreach (var item in ViewBag.ListUsers)
-        {
-            <p>@item.id</p>
-            <p>@item.firstName</p>
-            <p>@item.lastName</p>
-            <p>@item.email</p>
-            <p>@item.password</p>
-            <p>-----------------------------</p>
-        }
-    }
+
+    <div style="margin-left: 50px;">
+        @Html.ActionLink("Список зарегисрированных пользователей", "AllUsersIndex", "Home")
+    </div>
+
+
 </body>
 </html>
